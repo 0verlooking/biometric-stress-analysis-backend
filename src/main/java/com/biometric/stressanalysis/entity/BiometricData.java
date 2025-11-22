@@ -1,5 +1,6 @@
 package com.biometric.stressanalysis.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class BiometricData extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
     private User user;
 
     @Column(nullable = false)
@@ -72,6 +74,7 @@ public class BiometricData extends BaseEntity {
     private String notes;
 
     @OneToOne(mappedBy = "biometricData", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private StressAnalysis stressAnalysis;
 
     public enum SleepQuality {

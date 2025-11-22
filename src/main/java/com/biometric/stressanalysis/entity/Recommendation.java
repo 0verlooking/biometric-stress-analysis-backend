@@ -1,5 +1,6 @@
 package com.biometric.stressanalysis.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Recommendation extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "stress_analysis_id", nullable = false)
+    @JsonIgnore
     private StressAnalysis stressAnalysis;
 
     @Column(nullable = false)
